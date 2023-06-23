@@ -1,0 +1,23 @@
+.input_label
+    position: relative
+    cursor: pointer
+.radio_point > input
+    cursor: pointer !important
+
+.radio_point > input[type='radio']:checked
+    position: relative
+    background: white !important
+    border-color: black
+    &::after
+        content: ''
+        position: absolute
+        width: 70%
+        aspect-ratio: 1
+        border-radius: 50%
+        background: black
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        
+.radio_point > input[type='radio']:focus
+    box-shadow: none

@@ -1,11 +1,10 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { reducer as formReducer } from 'redux-form';
+
+import { reducer } from '../slice';
 
 const store = configureStore({
-    reducer: {
-        form: formReducer,
-    },
+    reducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
