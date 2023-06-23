@@ -8,7 +8,7 @@ export enum VARIANTS {
 export interface FormFields {
     radio: VARIANTS;
     switcher: boolean;
-    cash: number;
+    cash: number | string;
 }
 
 export interface SelectDetails {

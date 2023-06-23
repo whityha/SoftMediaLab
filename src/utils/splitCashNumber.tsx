@@ -1,3 +1,3 @@
-export const splitCashNumber = (number: number) => {
-    return number.toLocaleString('Ru-ru');
+export const splitCashNumber = (num: number | string) => {
+    return num.toLocaleString('Ru-ru');
 };

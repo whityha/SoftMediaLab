@@ -16,7 +16,7 @@ const App = () => {
     return (
         <Container>
             <Row>
-                <Col xs={5}>
+                <Col xs={10} md={5}>
                     <p className="mt-5 text-secondary title">Сумма</p>
                     <FormComponent />
                     {radio === VARIANTS.MONTH && <Details />}

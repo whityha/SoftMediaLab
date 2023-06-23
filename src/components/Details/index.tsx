@@ -7,6 +7,7 @@ import { splitCashNumber } from '@/utils/splitCashNumber';
 import './style.sass';
 const Details = () => {
     const { cashOnHands, ndfl, total } = useAppSelector(selectDetails);
+    console.log(cashOnHands, ndfl, total);
     return (
         <Row>
             <ul className="ms-3 mt-4 details">

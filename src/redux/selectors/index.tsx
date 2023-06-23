@@ -1,21 +1,22 @@
 import { RootState } from '@/redux/store';
 import { SelectDetails } from '@/types';
+import { joinCashNumber } from '@/utils/joinCashNumber';
 
 export const selectDetails = (state: RootState): SelectDetails => {
     const { cash, switcher: withoutNDFL } = state.formFields || {};
-
-    const total = Math.ceil(Number(cash) / 0.87);
-    const ndfl = Math.ceil(Number(cash) * 0.13);
+    const newCash = typeof cash === 'string' ? joinCashNumber(cash) : cash;
+    const total = Math.ceil(Number(newCash) / 0.87);
+    const ndfl = Math.ceil(Number(newCash) * 0.13);
 
     const noNDFL = {
-        cashOnHands: Number(cash),
-        ndfl: total - Number(cash),
+        cashOnHands: Number(newCash),
+        ndfl: total - Number(newCash),
         total,
     };
     const NDFL = {
-        cashOnHands: Number(cash) - ndfl,
+        cashOnHands: Number(newCash) - ndfl,
         ndfl,
-        total: Number(cash),
+        total: Number(newCash),
     };
 
     if (withoutNDFL) return noNDFL;
