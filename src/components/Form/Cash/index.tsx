@@ -11,14 +11,14 @@ import './style.sass';
 
 const Cash = ({ register, changeField }: ReactHookFormProperty) => {
     const monthCashRef = useRef<number>(0);
-    const { radio, cash } = useAppSelector(({ formFields }) => formFields);
+    const { variant, cash } = useAppSelector(({ formFields }) => formFields);
 
     const handleChangeCash = (e: ChangeEvent<HTMLInputElement>) => {
         const currentCashValue = e.target.value === '' ? 0 : joinCashNumber(e.target.value);
         changeField('cash', currentCashValue);
 
         let monthCashMemory = currentCashValue;
-        switch (radio) {
+        switch (variant) {
             case VARIANTS.DAY:
                 monthCashMemory = monthCashMemory * WORK_DAY_IN_MONTH;
                 break;
@@ -31,7 +31,7 @@ const Cash = ({ register, changeField }: ReactHookFormProperty) => {
     };
 
     const cashText = () => {
-        switch (radio) {
+        switch (variant) {
             case VARIANTS.DAY:
                 return <span className="emblem ms-3 fw-bold">₽ в день</span>;
             case VARIANTS.HOUR:
@@ -42,7 +42,7 @@ const Cash = ({ register, changeField }: ReactHookFormProperty) => {
     };
 
     const inputCashValue = () => {
-        switch (radio) {
+        switch (variant) {
             case VARIANTS.DAY:
                 return monthCashRef.current / WORK_DAY_IN_MONTH;
             case VARIANTS.HOUR:
@@ -54,7 +54,7 @@ const Cash = ({ register, changeField }: ReactHookFormProperty) => {
 
     useEffect(() => {
         changeField('cash', inputCashValue());
-    }, [radio]);
+    }, [variant]);
 
     return (
         <Form.Label className="d-flex align-items-center ms-3 mt-3 ">

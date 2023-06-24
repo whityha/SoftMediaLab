@@ -10,11 +10,11 @@ import './style.sass';
 import { RADIO_LIST } from '../config';
 
 const Variant = ({ register, changeField }: ReactHookFormProperty) => {
-    const variant = useAppSelector(({ formFields }) => formFields.radio);
+    const variant = useAppSelector(({ formFields }) => formFields.variant);
 
     const handleShowDetails = (e: ChangeEvent<HTMLInputElement>) => {
         const currentValue = e.target.value as VARIANTS;
-        changeField('radio', currentValue);
+        changeField('variant', currentValue);
     };
 
     return (

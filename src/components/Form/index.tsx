@@ -12,7 +12,7 @@ import Variant from './Variants';
 export const initialState: FormFields = {
     switcher: true,
     cash: 0,
-    radio: VARIANTS.MONTH,
+    variant: VARIANTS.MONTH,
 };
 
 const FormComponent = () => {
@@ -20,7 +20,7 @@ const FormComponent = () => {
         defaultValues: initialState,
     });
 
-    const radio = useAppSelector(({ formFields }) => formFields.radio);
+    const variant = useAppSelector(({ formFields }) => formFields.variant);
     const dispatch = useAppDispatch();
     const { setFormFields } = actions;
 
@@ -33,7 +33,7 @@ const FormComponent = () => {
     return (
         <Form>
             <Variant changeField={changeFormField} register={register} />
-            {!(radio === VARIANTS.MROT) && (
+            {!(variant === VARIANTS.MROT) && (
                 <>
                     <Switcher changeField={changeFormField} register={register} />
                     <Cash changeField={changeFormField} register={register} />
