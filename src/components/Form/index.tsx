@@ -10,7 +10,7 @@ import Switcher from './Switcher';
 import Variant from './Variants';
 
 export const initialState: FormFields = {
-    switcher: true,
+    withoutNDFL: false,
     cash: 0,
     variant: VARIANTS.MONTH,
 };

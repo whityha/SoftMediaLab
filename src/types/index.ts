@@ -7,7 +7,7 @@ export enum VARIANTS {
 
 export interface FormFields {
     variant: VARIANTS;
-    switcher: boolean;
+    withoutNDFL: boolean;
     cash: number | string;
 }
 

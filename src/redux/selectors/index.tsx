@@ -3,7 +3,7 @@ import { SelectDetails } from '@/types';
 import { joinCashNumber } from '@/utils/joinCashNumber';
 
 export const selectDetails = (state: RootState): SelectDetails => {
-    const { cash, switcher: withoutNDFL } = state.formFields || {};
+    const { cash, withoutNDFL } = state.formFields || {};
     const newCash = typeof cash === 'string' ? joinCashNumber(cash) : cash;
     const total = Math.ceil(Number(newCash) / 0.87);
     const ndfl = Math.ceil(Number(newCash) * 0.13);

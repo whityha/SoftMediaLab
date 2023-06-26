@@ -6,10 +6,10 @@ import { ReactHookFormProperty } from '@/types';
 import './style.sass';
 
 const Switcher = ({ register, changeField }: ReactHookFormProperty) => {
-    const switcher = useAppSelector((state) => state.formFields.switcher);
+    const { withoutNDFL } = useAppSelector(({ formFields }) => formFields);
 
     const handleNDFL = (e: React.ChangeEvent<HTMLInputElement>) => {
-        changeField('switcher', e.target.checked);
+        changeField('withoutNDFL', e.target.checked);
     };
 
     return (
@@ -20,7 +20,7 @@ const Switcher = ({ register, changeField }: ReactHookFormProperty) => {
                     px-1 
                     d-flex 
                     justify-content-center
-                    ${!switcher ? 'fw-bold' : 'text-secondary'}
+                    ${!withoutNDFL ? 'fw-bold' : 'text-secondary'}
                 `}
             >
                 Указать с НДФЛ
@@ -35,7 +35,7 @@ const Switcher = ({ register, changeField }: ReactHookFormProperty) => {
                     switcher__text 
                     d-flex 
                     justify-content-center
-                    ${switcher ? 'fw-bold' : 'text-secondary'}
+                    ${withoutNDFL ? 'fw-bold' : 'text-secondary'}
                 `}
             >
                 Без НДФЛ
