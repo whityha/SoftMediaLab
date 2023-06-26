@@ -18,27 +18,28 @@ const Variant = ({ control }: ReactHookFormProperty) => {
             name="variant"
             control={control}
             render={({ field }) => (
-                <ListGroup className="align-items-start">
+                <ListGroup className="align-items-start" as={'ul'}>
                     {RADIO_LIST.map(({ id, title }) => {
                         return (
-                            <Form.Label
-                                key={id}
-                                htmlFor={id}
-                                className="d-flex input_label fw-bold w-auto"
-                            >
-                                <Form.Check
-                                    id={id}
-                                    type="radio"
-                                    className="me-2 radio_point"
-                                    defaultChecked={id === defaultValue}
-                                    {...field}
-                                    value={id}
-                                />
-                                {title}
+                            <li key={id} className="position-relative mb-2">
+                                <Form.Label
+                                    htmlFor={id}
+                                    className="d-flex input_label fw-bold w-auto mb-0"
+                                >
+                                    <Form.Check
+                                        id={id}
+                                        type="radio"
+                                        className="me-2 radio_point"
+                                        defaultChecked={id === defaultValue}
+                                        {...field}
+                                        value={id}
+                                    />
+                                    {title}
+                                </Form.Label>
                                 {variant === field.value && id === VARIANTS.MROT && (
                                     <Notification />
                                 )}
-                            </Form.Label>
+                            </li>
                         );
                     })}
                 </ListGroup>
