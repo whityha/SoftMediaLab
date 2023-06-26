@@ -1,24 +1,26 @@
 import { Row } from 'react-bootstrap';
 
-import { selectDetails } from '@/redux/selectors';
-import { useAppSelector } from '@/redux/store';
-import { splitCashNumber } from '@/utils/splitCashNumber';
+import { NDFL_PERCENT } from '@/constants';
+import { calculateDetails } from '@/utils/calculateDetails';
+import { joinNumberFromLocalString } from '@/utils/joinNumberFromLocalString';
+import { splitNumberByLocalString } from '@/utils/splitNumberByLocalString';
 
 import './style.sass';
-const Details = () => {
-    const { cashOnHands, ndfl, total } = useAppSelector(selectDetails);
-    console.log(cashOnHands, ndfl, total);
+const Details = ({ cash, withoutNDFL }: { cash: string; withoutNDFL: boolean }) => {
+    const numberedCash = joinNumberFromLocalString(cash);
+    const { cashOnHands, ndfl, total } = calculateDetails(numberedCash, withoutNDFL);
     return (
         <Row>
-            <ul className="ms-3 mt-4 details">
+            <ul className="ms-3 mt-4 details d-flex flex-column gap-2">
                 <li>
-                    <b>{splitCashNumber(cashOnHands)}</b> ₽ сотрудник будет получать на руки
+                    <b>{splitNumberByLocalString(cashOnHands)} ₽</b> сотрудник будет получать на
+                    руки
                 </li>
                 <li>
-                    <b>{splitCashNumber(ndfl)}</b> ₽ НФДЛ, 13% от оклада
+                    <b>{splitNumberByLocalString(ndfl)} ₽</b> НФДЛ, {NDFL_PERCENT}% от оклада
                 </li>
                 <li>
-                    <b>{splitCashNumber(total)}</b> ₽ за сотрудника в месяц
+                    <b>{splitNumberByLocalString(total)} ₽</b> за сотрудника в месяц
                 </li>
             </ul>
         </Row>

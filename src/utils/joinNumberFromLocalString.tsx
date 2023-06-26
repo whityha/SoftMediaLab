@@ -1,3 +1,3 @@
-export const joinCashNumber = (str: string) => {
+export const joinNumberFromLocalString = (str: string): number => {
     return parseFloat(str.replace(/\s/g, '').replace(',', '.'));
 };

@@ -8,7 +8,7 @@ export enum VARIANTS {
 export interface FormFields {
     variant: VARIANTS;
     withoutNDFL: boolean;
-    cash: number | string;
+    cash: string;
 }
 
 export interface SelectDetails {
@@ -16,10 +16,13 @@ export interface SelectDetails {
     ndfl: number;
     total: number;
 }
-
-export type TRegister = any;
-export type TChangeField = (name: keyof FormFields, e: number | boolean | VARIANTS) => void;
 export interface ReactHookFormProperty {
-    register: TRegister;
-    changeField: TChangeField;
+    control?: any;
 }
+export interface Details {
+    cashOnHands: number;
+    ndfl: number;
+    total: number;
+}
+
+export type FormFieldsKeys = keyof FormFields;
